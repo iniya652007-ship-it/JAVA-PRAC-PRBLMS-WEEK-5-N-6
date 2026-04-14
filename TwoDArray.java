@@ -1,49 +1,41 @@
 import java.util.Scanner;
 
-class SumOfDigits {
+class TwoDArray {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        // Take input
-        System.out.print("Enter a number: ");
-        int number = input.nextInt();
+        // Input rows and columns
+        System.out.print("Enter number of rows: ");
+        int rows = input.nextInt();
 
-        // Validate input
-        if (number < 0) {
-            System.out.println("Invalid Number.");
-            return;
+        System.out.print("Enter number of columns: ");
+        int cols = input.nextInt();
+
+        // Create array
+        int[][] arr = new int[rows][cols];
+
+        // Input elements
+        System.out.println("Enter elements:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                arr[i][j] = input.nextInt();
+            }
         }
 
-        // Special case for 0
-        if (number == 0) {
-            System.out.println("Sum of Digits: 0");
-            return;
-        }
-
-        // Count digits
-        int count = 0;
-        int temp = number;
-        while (temp > 0) {
-            count++;
-            temp /= 10;
-        }
-
-        // Store digits in array
-        int[] digits = new int[count];
-        for (int i = 0; i < count; i++) {
-            digits[i] = number % 10;
-            number /= 10;
-        }
-
-        // Find sum
+        // Display + Sum
         int sum = 0;
-        for (int i = 0; i < count; i++) {
-            sum += digits[i];
+        System.out.println("\nMatrix:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(arr[i][j] + " ");
+                sum += arr[i][j];
+            }
+            System.out.println();
         }
 
-        // Output
-        System.out.println("Sum of Digits: " + sum);
+        // Output sum
+        System.out.println("Sum of elements: " + sum);
 
         input.close();
     }
